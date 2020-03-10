@@ -1,0 +1,37 @@
+@layout('main')
+@section('title')
+<h4 class="page-title pull-left">Usuários</h4>
+@endsection
+@section('area')
+<li><a href="/users">usuários</a></li>
+@endsection
+@section('function')
+<li><span>Todos os usuários</span></li>  
+@endsection
+@section('content')
+<h4 class="header-title">Todos os usuários</h4>
+<div class="data-tables">
+    <table id="dataTable" class="text-center">
+        <thead class="bg-light text-capitalize">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Image</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(user in users)
+            <tr>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.cpf}}</td>
+                <td>{{user.img_url}}</td>
+                <td>{{user.id}}</td>
+            </tr>
+            @endeach
+        </tbody>
+    </table>
+</div>
+@endsection
