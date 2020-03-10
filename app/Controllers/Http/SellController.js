@@ -4,9 +4,9 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-/**
- * Resourceful controller for interacting with sells
- */
+const Sell = use('App/Models/Sell')
+const Client = use('App/Models/Client')
+const Product = use('App/Models/Product')
 class SellController {
   /**
    * Show a list of all sells.

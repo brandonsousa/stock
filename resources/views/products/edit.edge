@@ -9,5 +9,71 @@
 <li><span>Editar</span></li>  
 @endsection
 @section('content')
-
-@endsection
+<h4 class="header-title">Editar produto</h4>
+<form action="/products" method="POST">
+        <div class="form-group">
+            <label for="inputName">Nome</label>
+            <input type="name" class="form-control" id="inputName" 
+                aria-describedby="nameHelp" placeholder="Nome" value="{{products.name}}" name="name" required>
+            <small id="nameHelp" class="form-text text-muted">
+                Nome conforme a embalagem
+            </small>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-4">
+                <label for="validationCustom01">Categoria</label>
+                <select id="disabledSelect" class="form-control" name="category_id">
+                    @each(category in categories)
+                        <option value="{{category.id}}">{{category.name}}</option>
+                    @endeach
+                </select>
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="validationCustom02">Fornecedor</label>
+                <select id="disabledSelect" class="form-control" name="provider_id">
+                    @each(provider in providers)
+                        <option value="{{provider.id}}">{{provider.name}}</option>
+                    @endeach
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Tamanho</label>
+                <input type="text" class="form-control" 
+                    id="validationCustom01" placeholder="Tamanho em Kg, ml, L"  name="size" required="">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Quantidade</label>
+                <input type="text" class="form-control" 
+                    id="validationCustom02" placeholder="Quantidade" name="amount" required="">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Codigo de barras</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" 
+                            id="inputGroupPrepend"><i class="ti-layout-column4-alt"></i></span>
+                    </div>
+                    <input type="text" class="form-control" 
+                        id="validationCustomUsername" name="bar_code"
+                            placeholder="370230127084794" aria-describedby="inputGroupPrepend" required="">
+                    <div class="invalid-feedback">
+                        Please choose a username.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="example-date-input" class="col-form-label">Data de válidade</label>
+            <input class="form-control" type="date" value="{{products.due}}" id="example-date-input" name="due">
+        </div>
+        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
+</form>
+@endsection                        

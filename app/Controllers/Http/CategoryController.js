@@ -22,6 +22,12 @@ class CategoryController {
     return view.render('categories.all', {categories : categories.toJSON()})
   }
 
+
+  async j({response}){
+    const categories = await Category.all()
+
+    return response.send({categories})
+  }
   
 
   /**

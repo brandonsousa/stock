@@ -4,9 +4,12 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-/**
- * Resourceful controller for interacting with products
- */
+const axios = require('axios')
+
+const Product = use('App/Models/Product')
+const Category = use('App/Models/Category')
+const Provider = use('App/Models/Provider')
+const Database = use('Database')
 class ProductController {
   /**
    * Show a list of all products.
@@ -18,9 +21,14 @@ class ProductController {
    * @param {View} ctx.view
    */
   async index ({ view }) {
-
-    return view.render('products.all')
-
+    const products = await Database.raw('SELECT prod.*, prov.name AS "provider", usr.username AS "user", cat.name AS "category" '+ 
+    'FROM products AS prod '+
+    'INNER JOIN providers AS prov ON prov.id = prod.provider_id '+
+    'INNER JOIN users AS usr ON usr.id = prod.user_id '+
+    'INNER JOIN categories AS cat ON cat.id = prod.category_id')
+    return view.render('products.all', {
+      products : products[0]
+    })
   }
 
   /**
@@ -33,7 +41,15 @@ class ProductController {
    * @param {View} ctx.view
    */
   async create ({ view }) {
-    return view.render('products.create')
+    
+    const categories = await Category.all()
+    const providers = await Provider.all()
+
+    return view.render('products.create', {
+      categories : categories.toJSON(),
+      providers : providers.toJSON()
+    })
+    
   }
 
   /**
@@ -44,7 +60,14 @@ class ProductController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, response, auth }) {
+
+    const newProduct = request.all()
+
+    await Product.create({ 'user_id' : auth.user.id, ...newProduct})
+
+    return response.redirect('/products/create')
+
   }
 
   /**
@@ -68,7 +91,12 @@ class ProductController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
+  async edit ({ params, view }) {
+    const productToEdit = await Product.find(params.id)
+    console.log(productToEdit.toJSON())
+    return view.render('products.edit', {
+      product : productToEdit
+    })
   }
 
   /**

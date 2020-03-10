@@ -20,10 +20,28 @@
         </small>
     </div>
     <div class="form-row">
+        <div class="col-md-6 mb-4">
+            <label for="validationCustom01">Categoria</label>
+            <select id="disabledSelect" class="form-control" name="category_id">
+                @each(category in categories)
+                    <option value="{{category.id}}">{{category.name}}</option>
+                @endeach
+            </select>
+        </div>
+        <div class="col-md-6 mb-4">
+            <label for="validationCustom02">Fornecedor</label>
+            <select id="disabledSelect" class="form-control" name="provider_id">
+                @each(provider in providers)
+                    <option value="{{provider.id}}">{{provider.name}}</option>
+                @endeach
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="validationCustom01">Tamanho</label>
             <input type="text" class="form-control" 
-                id="validationCustom01" placeholder="Tamanho em Kg, ml, L"  required="">
+                id="validationCustom01" placeholder="Tamanho em Kg, ml, L" name="size" required="">
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -31,7 +49,7 @@
         <div class="col-md-4 mb-3">
             <label for="validationCustom02">Quantidade</label>
             <input type="text" class="form-control" 
-                id="validationCustom02" placeholder="Quantidade"  required="">
+                id="validationCustom02" placeholder="Quantidade" name="amount"  required="">
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -44,7 +62,7 @@
                         id="inputGroupPrepend"><i class="ti-layout-column4-alt"></i></span>
                 </div>
                 <input type="text" class="form-control" 
-                    id="validationCustomUsername" 
+                    id="validationCustomUsername" name="bar_code"
                         placeholder="370230127084794" aria-describedby="inputGroupPrepend" required="">
                 <div class="invalid-feedback">
                     Please choose a username.

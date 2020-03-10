@@ -51,9 +51,11 @@
         </thead>
         <tbody>
               @each(category in categories)
-                <th>{{category.name}}</th>
-                <th>{{category.created_at}}</th>
-                <th>{{category.id}}</th>
+                <tr>
+                    <th>{{category.name}}</th>
+                    <th>{{category.created_at}}</th>
+                    <th>{{category.id}}</th>
+                </tr>
               @endeach
         </tbody>
     </table>

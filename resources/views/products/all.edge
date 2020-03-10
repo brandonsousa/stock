@@ -6,44 +6,42 @@
 <li><a href="/products">produtos</a></li>
 @endsection
 @section('function')
-<li><span>Cadastrar</span></li>  
+<li><span>Todos os produtos</span></li>  
 @endsection
 @section('content')
-<h4 class="header-title">Cadastrar novo produto</h4>
-<form action="/products" method="POST">
-    <div class="form-group">
-        <label for="inputUsername">Nome completo</label>
-        <input type="name" class="form-control" id="inputUsername" 
-            aria-describedby="usernameHelp" placeholder="Nome completo" name="username" required>
-        <small id="usernameHelp" class="form-text text-muted">
-            Seu nome que quer ser chamado
-        </small>
-    </div>
-    <div class="form-group">
-        <label for="inputImageUrl">Link de imagem</label>
-        <input type="url" class="form-control" id="inputImageUrl" 
-            aria-describedby="imageHelp" placeholder="Url..." name="img_url" required>
-        <small id="imageHelp" class="form-text text-muted">Facebook, Instagram, Tweeter...</small>
-    </div>
-    <div class="form-group">
-        <label for="inputCPF">CPF</label>
-        <input type="name" class="form-control" id="inputCPF" 
-            aria-describedby="cpfHelp" placeholder="Informe o CPF" name="cpf" required>
-        <small id="cpfHelp" class="form-text text-muted">Número do CPF</small>
-    </div>
-    <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" 
-            aria-describedby="emailHelp" placeholder="Insira o email" name="email" required>
-        <small id="emailHelp" class="form-text text-muted">
-        Seu email é para uso interno do sistema</small>
-    </div>
-    <div class="form-group">
-        <label for="inputPassword">Senha</label>
-        <input type="password" class="form-control" id="inputPassword" 
-            placeholder="Senha" aria-describedby="passwordHelp" name="password" required>
-        <small id="passwordHelp" class="form-text text-muted">Não use sua senha comum de email</small>
-    </div>
-    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
-</form>
-@endsection                        
+<h4 class="header-title">Todos os produtos</h4>
+<div class="data-tables">
+    <table id="dataTable" class="text-center">
+        <thead class="bg-light text-capitalize">
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Validade</th>
+                <th>Fornecedor</th>
+                <th>Categoria</th>
+                <th>Criado por</th>
+                <th>Quantidade</th>
+                <th>Tamanho</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(product in products)
+            <tr>
+                <td>{{product.bar_code}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.due}}</td>
+                <td>{{product.provider}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.user}}</td>
+                <td>{{product.amount}}</td>
+                <td>{{product.size}}</td>
+                <td>
+                    <a href="/products/{{product.id}}/edit" class="btn btn-primary mt-4 pr-4 pl-4">Editar</a>
+                </td>
+            </tr>
+            @endeach
+        </tbody>
+    </table>
+</div>
+@endsection

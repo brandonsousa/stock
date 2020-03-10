@@ -27,4 +27,6 @@ Route.get('/', 'AuthController.index')
 Route.post('/auth', 'AuthController.login')
 Route.get('/auth/logout', 'AuthController.logout')
 
-Route.resource('/dashboard', 'DashboardController')
+Route.resource('/dashboard', 'DashboardController').middleware('auth')
+
+Route.get('/c/j', 'CategoryController.j')
