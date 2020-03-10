@@ -1,0 +1,59 @@
+@layout('main')
+@section('title')
+<h4 class="page-title pull-left">Venda</h4>
+@endsection
+@section('area')
+<li><a href="/sales/">vendas</a></li>
+@endsection
+@section('function')
+<li><span>nova venda</span></li>  
+@endsection
+@section('content')
+<h4 class="header-title">Realizar venda</h4>
+<form action="/sale" method="POST">
+    <div class="form-group">
+        <label for="inputPhone">Telefone do cliente</label>
+        <input type="tel" class="form-control" id="inputPhone" 
+            aria-describedby="phoneHelp" placeholder="Telefone do cliente" name="phone" required>
+        <small id="phoneHelp" class="form-text text-muted">
+            <b>Antes de realizar a venda, vá na lista de clientes cadastrados e verifique se 
+            se ele ja esta cadastrado com o numero, caso não esteja efetue o cadastro,
+            pois sem o numero a venda não será registrada</b>
+        </small>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01">Produto</label>
+            <select id="disabledSelect" class="form-control" name="product_id">
+                @each(product in products)
+                    <option value="{{product.id}}">{{product.name}}, R${{product.price_to_sale}}</option>
+                @endeach
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Quantidade</label>
+            <input type="text" class="form-control" 
+                id="validationCustom02" placeholder="Quantidade" name="amount"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustomUsername">Observação</label>
+            <input type="text" class="form-control" 
+                id="validationCustom02" placeholder="Quantidade" name="description"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="example-date-input" class="col-form-label">
+            O valor da venda será calculado pelo <b>valor do produto</b> e a <b>quantidade</b> informada,
+            para saber o valor, use a calculadora e pegue o valor do produto e multiplique pela
+            quantidade, ou então realize a venda e veja nas vendas pendentes o <b>valor</b> total.
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Realizar pedido</button>
+</form>
+@endsection                        

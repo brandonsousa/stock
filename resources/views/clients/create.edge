@@ -1,0 +1,110 @@
+@layout('main')
+@section('title')
+<h4 class="page-title pull-left">Clientes</h4>
+@endsection
+@section('area')
+<li><a href="/clients">clients</a></li>
+@endsection
+@section('function')
+<li><span>Cadastrar</span></li>  
+@endsection
+@section('content')
+<h4 class="header-title">Cadastrar novo cliente</h4>
+<form action="/clients" method="POST">
+    <div class="form-row">
+        <div class="col-md-8 mb-4">
+            <label for="inputName">Nome</label>
+            <input type="name" class="form-control" id="inputName" 
+                aria-describedby="nameHelp" placeholder="Nome" name="name" required>
+            <small id="nameHelp" class="form-text text-muted">
+                Nome completo
+        </small>
+        </div>
+        <div class="col-md-4 mb-4">
+            <label for="inputName">Telefone</label>
+            <input type="tel" class="form-control" id="inputName" 
+                aria-describedby="nameHelp" placeholder="Telefone" name="phone" required>
+            <small id="nameHelp" class="form-text text-muted">
+                Com DDD, de preferência, pessa o do WHATSAPP
+            </small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01">Rua</label>
+            <input type="text" class="form-control" 
+                id="validationCustom01" placeholder="Rua como é conhecida" name="street" required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Número</label>
+            <input type="text" class="form-control" 
+                id="validationCustom02" placeholder="320A" name="number"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Bairro</label>
+            <select id="disabledSelect" class="form-control" name="neighborhood">
+               <option value="Alto Alegria">Alto Alegria</option>
+               <option value="Alto do Rosário">Alto do Rosário</option>
+               <option value="Arajara">Arajara</option>
+               <option value="Barro Vermelho">Barro Vermelho</option>
+               <option value="Bela Vista">Bela Vista</option>
+               <option value="Bulandeira">Bulandeira</option>
+               <option value="Buriti">Buriti</option>
+               <option value="Caldas">Caldas</option>
+               <option value="Casas Populares">Casas Populares</option>
+               <option value="Centro">Centro</option>
+               <option value="Cirolandia">Cirolandia</option>
+               <option value="Conjunto Cecasa">Conjunto Cecasa</option>
+               <option value="Conjunto N Senhora de Fátima">Conjunto Nossa Senhora de Fátima</option>
+               <option value="Conjunto Residencial Lagoa S">Conjunto Residencial Lagoa Seca</option>
+               <option value="Crajubar">Crajubar</option>
+               <option value="Distrito Lagoa">Distrito Lagoa</option>
+               <option value="Distrito Estrela">Distrito Estrela</option>
+               <option value="Lagoa Seca">Lagoa Seca</option>
+               <option value="Loteamento Virgílio Torres">Loteamento Virgílio Torres</option>
+               <option value="Malvinas">Malvinas</option>
+               <option value="Mata">Mata</option>
+               <option value="Mata dos Dudas">Mata dos Dudas</option>
+               <option value="Nossa Senhora de Fátima">Nossa Senhora de Fátima</option>
+               <option value="Parque Bulandeira">Parque Bulandeira</option>
+               <option value="Parque Cirolandia">Parque Cirolandia</option>
+               <option value="Parque Crajubar">Parque Crajubar</option>
+               <option value="Rosário">Rosário</option>
+               <option value="Royal Ville">Royal Ville</option>
+               <option value="Santa Terezinha">Santa Terezinha</option>
+               <option value="Santo Antônio">Santo Antônio</option>
+               <option value="Sítio Brejinho">Sítio Brejinho</option>
+               <option value="Sítio Lagoa">Sítio Lagoa</option>
+               <option value="Sítio Mata">Sítio Mata</option>
+               <option value="Sítio Mata dos Limas">Sítio Mata dos Limas</option>
+               <option value="Vila Santa Terezinha">Vila Santa Terezinha</option>
+               <option value="Vila Santo Antônio">Vila Santo Antônio</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Cidade</label>
+            <select id="disabledSelect" class="form-control" name="city" required>
+                <option value="Barbalha">Barbalha</option>
+                <option value="Juazeiro do Norte">Juazeiro</option>
+            </select>
+        </div>
+        <div class="col-md-8 mb-6">
+            <label for="validationCustom02">Ponto de referência</label>
+            <input type="text" class="form-control" 
+                id="validationCustom02" placeholder="próximo a casa de chico" name="reference"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
+</form>
+@endsection                        

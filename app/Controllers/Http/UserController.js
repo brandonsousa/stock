@@ -8,7 +8,7 @@ class UserController{
   }
 
 /**
- * Render a form to be used for creating a new sell.
+ * Render a form to be used for creating a new user.
  * GET user/create
  *
  * @param {object} ctx

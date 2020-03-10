@@ -21,7 +21,7 @@ Route.resource('/categories', 'CategoryController').middleware('auth')
 Route.resource('/products', 'ProductController').middleware('auth')
 Route.resource('/clients', 'ClientController').middleware('auth')
 Route.resource('/providers', 'ProviderController').middleware('auth')
-Route.resource('/sell', 'SellController').middleware('auth')
+Route.resource('/sale', 'SaleController').middleware('auth')
 
 Route.get('/', 'AuthController.index')
 Route.post('/auth', 'AuthController.login')

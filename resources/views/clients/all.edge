@@ -6,10 +6,10 @@
 <li><a href="/clients">clients</a></li>
 @endsection
 @section('function')
-<li><span>.</span></li>  
+<li><span>todos</span></li>  
 @endsection
 @section('content')
-<h4 class="header-title">Cliente(s)</h4>
+<h4 class="header-title">Todos os Clientes</h4>
 <div class="data-tables">
     <table id="dataTable" class="text-center">
         <thead class="bg-light text-capitalize">
@@ -31,9 +31,9 @@
                 <td>{{client.phone}}</td>
                 <td>{{client.street}}, {{client.number}}, {{client.neighborhood}}, {{client.city}}</td>
                 <td>{{client.reference}}</td>
-                <td>{{client.user_id}}</td>
+                <td>{{client.user}}</td>
                 <td>
-                    <a href="/sells/{{client.id}}" class="btn btn-primary mt-4 pr-4 pl-4">Realizar pedido</a>
+                    <a href="/sale/create" class="btn btn-primary mt-4 pr-4 pl-4">Realizar pedido</a>
                 </td>
             </tr>
             @endeach
