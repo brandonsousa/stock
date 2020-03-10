@@ -1,0 +1,61 @@
+@layout('main')
+@section('title')
+<h4 class="page-title pull-left">Produtos</h4>
+@endsection
+@section('area')
+<li><a href="/products">produtos</a></li>
+@endsection
+@section('function')
+<li><span>Cadastrar</span></li>  
+@endsection
+@section('content')
+<h4 class="header-title">Cadastrar novo produto</h4>
+<form action="/products" method="POST">
+    <div class="form-group">
+        <label for="inputName">Nome</label>
+        <input type="name" class="form-control" id="inputName" 
+            aria-describedby="nameHelp" placeholder="Nome" name="name" required>
+        <small id="nameHelp" class="form-text text-muted">
+            Nome conforme a embalagem
+        </small>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01">Tamanho</label>
+            <input type="text" class="form-control" 
+                id="validationCustom01" placeholder="Tamanho em Kg, ml, L"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Quantidade</label>
+            <input type="text" class="form-control" 
+                id="validationCustom02" placeholder="Quantidade"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustomUsername">Codigo de barras</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" 
+                        id="inputGroupPrepend"><i class="ti-layout-column4-alt"></i></span>
+                </div>
+                <input type="text" class="form-control" 
+                    id="validationCustomUsername" 
+                        placeholder="370230127084794" aria-describedby="inputGroupPrepend" required="">
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="example-date-input" class="col-form-label">Data de válidade</label>
+        <input class="form-control" type="date" id="example-date-input" name="due">
+    </div>
+    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
+</form>
+@endsection                        

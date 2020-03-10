@@ -33,7 +33,7 @@ async store ({ request, response }) {
 
   await User.create(newUser)
 
-  return response.status(200).send('Cadastrado ' + newUser.email)
+  return response.redirect('/users')
 }
 
 /**

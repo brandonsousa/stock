@@ -3,49 +3,33 @@
 <h4 class="page-title pull-left">Fornecedor</h4>
 @endsection
 @section('area')
-<li><a href="/providers">fordecedores</a></li>
+<li><a href="/categories">Categorias</a></li>
 @endsection
 @section('function')
-<li><span>Todos os fornecedores</span></li>  
+<li><span>Categorias de produtos</span></li>  
 @endsection
 @section('content')
-<h4 class="header-title">Todos os fornecedores</h4>
+<h4 class="header-title">Todas as categorias</h4>
 <div class="data-tables">
     <button type="button" class="btn btn-primary btn-flat btn-lg mt-3" 
     data-toggle="modal" 
-    data-target="#exampleModalLong">Novo fornecedor</button>
+    data-target="#exampleModalLong">Nova categoria</button>
     <br>
     <div class="modal fade" id="exampleModalLong">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Novo fornecedor</h5>
+                    <h5 class="modal-title">Nova categoria</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/providers" method="POST">
+                    <form action="/categories" method="POST">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
                             <input type="name" class="form-control" id="inputName" 
                             aria-describedby="nameHelp" placeholder="Nome" name="name" required>
                             <small id="nameHelp" class="form-text text-muted">
                                 Nome que seja reconhecido
-                            </small>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" 
-                            aria-describedby="emailHelp" placeholder="Email" name="email" required>
-                            <small id="emailHelp" class="form-text text-muted">
-                                Email, não pode ser em branco
-                            </small>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPhone">Telefone</label>
-                            <input type="tel" class="form-control" id="inputPhone" 
-                            aria-describedby="emailHelp" placeholder="Telefone" name="phone" required>
-                            <small id="emailHelp" class="form-text text-muted">
-                                Número com DDD
                             </small>
                         </div>
                         <div class="modal-footer">
@@ -61,19 +45,15 @@
         <thead class="bg-light text-capitalize">
             <tr>
                 <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
                 <th>Cadastrado em</th>
                 <th>Editar</th>
             </tr>
         </thead>
         <tbody>
-              @each(provider in providers)
-                <th>{{provider.name}}</th>
-                <th>{{provider.email}}</th>
-                <th>{{provider.phone}}</th>
-                <th>{{provider.created_at}}</th>
-                <th>{{provider.id}}</th>
+              @each(category in categories)
+                <th>{{category.name}}</th>
+                <th>{{category.created_at}}</th>
+                <th>{{category.id}}</th>
               @endeach
         </tbody>
     </table>

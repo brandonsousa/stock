@@ -17,7 +17,10 @@ class ProductController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index ({ view }) {
+
+    return view.render('products.all')
+
   }
 
   /**
@@ -29,7 +32,8 @@ class ProductController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async create ({ view }) {
+    return view.render('products.create')
   }
 
   /**

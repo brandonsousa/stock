@@ -11,13 +11,13 @@
 @section('content')
 
                         <h4 class="header-title">Cadastrar novo usuário</h4>
-                        <form>
+                        <form action="/users" method="POST">
                             <div class="form-group">
                                 <label for="inputUsername">Nome completo</label>
                                 <input type="name" class="form-control" id="inputUsername" 
                                 aria-describedby="usernameHelp" placeholder="Nome completo" name="username" required>
                                 <small id="usernameHelp" class="form-text text-muted">
-                                    Seu email é para uso interno do sistema
+                                    Seu nome que quer ser chamado
                                 </small>
                             </div>
                             <div class="form-group">
@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputCPF">CPF</label>
-                                <input type="number" class="form-control" id="inputCPF" 
+                                <input type="name" class="form-control" id="inputCPF" 
                                 aria-describedby="cpfHelp" placeholder="Informe o CPF" name="cpf" required>
                                 <small id="cpfHelp" class="form-text text-muted">Número do CPF</small>
                             </div>

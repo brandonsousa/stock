@@ -4,9 +4,7 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-/**
- * Resourceful controller for interacting with categories
- */
+const Category = use('App/Models/Category')
 class CategoryController {
   /**
    * Show a list of all categories.
@@ -17,20 +15,14 @@ class CategoryController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index ({ view }) {
+
+    const categories = await Category.all()
+
+    return view.render('categories.all', {categories : categories.toJSON()})
   }
 
-  /**
-   * Render a form to be used for creating a new category.
-   * GET categories/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
+  
 
   /**
    * Create/save a new category.
@@ -40,7 +32,14 @@ class CategoryController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, response, auth}) {
+
+    const newCategory = request.all()
+
+    await Category.create({ 'user_id' : auth.user.id , ...newCategory})
+
+    return response.redirect('/categories')
+
   }
 
   /**

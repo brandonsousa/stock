@@ -1,12 +1,6 @@
 'use strict'
 
-/** @typedef {import('@adonisjs/framework/src/Request')} Request */
-/** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/framework/src/View')} View */
-
-/**
- * Resourceful controller for interacting with providers
- */
+const Provider = use('App/Models/Provider')
 class ProviderController {
   /**
    * Show a list of all providers.
@@ -17,7 +11,10 @@ class ProviderController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index ({ view }) {
+    const providers = await Provider.all()
+
+    return view.render('providers.all', {providers: providers.toJSON()})
   }
 
   /**
@@ -40,7 +37,13 @@ class ProviderController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, response, auth }) {
+
+    const newProvider = request.all()
+
+    await Provider.create({ 'user_id' : auth.user.id, ...newProvider})
+
+    return response.redirect('/providers')
   }
 
   /**
