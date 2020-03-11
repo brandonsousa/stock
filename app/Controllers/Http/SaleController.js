@@ -106,6 +106,17 @@ class SaleController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    
+    const sale = await Sale.find(params.id)
+
+    sale.merge({
+      ready : true
+    })
+
+    await sale.save()
+
+    return response.redirect('/sale')
+
   }
 
   /**
