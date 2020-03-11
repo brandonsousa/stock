@@ -19,7 +19,7 @@ class SaleController {
    * @param {View} ctx.view
    */
   async index ({ view }) {
-    const sales = await Databse.raw('SELECT s.*, u.username AS "user", c.*, p.name AS "product" '+
+    const sales = await Databse.raw('SELECT s.*, s.id AS "sid", u.username AS "user", c.*, p.name AS "product" '+
     'FROM sales AS s '+
     'INNER JOIN users AS u ON s.user_id = u.id '+
     'INNER JOIN clients AS c ON s.client_id = c.id '+
@@ -62,11 +62,19 @@ class SaleController {
       const p = await Product.find(newSale.product_id)
       if(p){
         const totalPrice = newSale.amount * p.price_to_sale
+        
+        const subtractToAmount = p.amount - newSale.amount
+
+        p.merge({
+          amount : subtractToAmount
+        })
+
+        await p.save()
 
         newSale.price = totalPrice
         const {product_id, description} = newSale
          
-        await Sale.create({ 'user_id' : auth.user.id, 'price': newSale.price, product_id, description, 'client_id' : c.id})
+        await Sale.create({ 'user_id' : auth.user.id, 'price': newSale.price, product_id, description, amount, 'client_id' : c.id})
         return response.redirect('/sale')
       }
     }
@@ -107,6 +115,9 @@ class SaleController {
    */
   async update ({ params, request, response }) {
     
+  }
+
+  async checkout({params, response}){
     const sale = await Sale.find(params.id)
 
     sale.merge({
@@ -116,7 +127,6 @@ class SaleController {
     await sale.save()
 
     return response.redirect('/sale')
-
   }
 
   /**
@@ -128,6 +138,7 @@ class SaleController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
+    
   }
 }
 

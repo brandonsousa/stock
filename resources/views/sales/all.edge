@@ -27,15 +27,15 @@
         <tbody>
             @each(sale in sales)
                     <tr>
-                        <td>#{{sale.id}}</td>
+                        <td>#{{sale.sid}}</td>
                         <td>{{sale.ready}}</td>
-                        <td>{{sale.amount}}, {{sale.product}}</td>
+                        <td>{{sale.amount}} x {{sale.product}}</td>
                         <td>{{sale.description}}</td>
                         <td>{{sale.name}}</td>
                         <td>{{sale.street}}, {{sale.number}}, {{sale.neighborhood}}, {{sale.city}} || {{sale.reference}}</td>
-                        <td>{{sale.user}}</td>
+                        <td>{{sale.user}}, <b>em</b> {{sale.created_at}}</td>
                         <td>
-                            <a href="/sale/{{sale.id}}" class="btn btn-primary mt-4 pr-4 pl-4">Concluir pedido</a>
+                            <a href="/sale/checkout/{{sale.sid}}" class="btn btn-primary mt-4 pr-4 pl-4">Concluir pedido</a>
                         </td>
                     </tr>
             @endeach
