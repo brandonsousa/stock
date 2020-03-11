@@ -40,7 +40,7 @@ class SaleController {
    * @param {View} ctx.view
    */
   async create ({ view }) {
-    const products = await Product.all()
+    const products = await Product.query().where('amount','>', 0 ).fetch()
 
     return view.render('sales.create', {
       products: products.toJSON()
