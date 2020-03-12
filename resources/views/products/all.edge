@@ -22,6 +22,8 @@
                 <th>Criado por</th>
                 <th>Quantidade</th>
                 <th>Tamanho</th>
+                <th>Preço de compra</th>
+                <th>`reço de venda</th>
                 <th>Editar</th>
             </tr>
         </thead>
@@ -35,7 +37,8 @@
                 <td>{{product.category}}</td>
                 <td>{{product.user}}</td>
                 <td>{{product.amount}}</td>
-                <td>{{product.size}}</td>
+                <td>{{product.purchase_price}}</td>
+                <td>{{product.price_to_sale}}</td>
                 <td>
                     <a href="/products/{{product.id}}/edit" class="btn btn-primary mt-4 pr-4 pl-4">Editar</a>
                 </td>

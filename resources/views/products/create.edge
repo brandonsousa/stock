@@ -70,9 +70,27 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <label for="example-date-input" class="col-form-label">Data de válidade</label>
-        <input class="form-control" type="date" id="example-date-input" name="due">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01">Preço de compra</label>
+            <input type="text" class="form-control" 
+                id="validationCustom01" placeholder="Valor arredondado" name="purchase_price" required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Preço de venda</label>
+            <input type="text" class="form-control" 
+                id="validationCustom02" placeholder="Valor arredondado" name="price_to_sale"  required="">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="example-date-input" class="col-form-label">Data de válidade</label>
+            <input class="form-control" type="date" id="example-date-input" name="due" required>
+        </div>
     </div>
     <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
 </form>
