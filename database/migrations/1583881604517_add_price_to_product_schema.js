@@ -6,8 +6,8 @@ const Schema = use('Schema')
 class AddPriceToProductSchema extends Schema {
   up () {
     this.table('products', (table) => {
-      table.decimal('price_to_sale')
-      table.decimal('purchase_price')
+      table.double('price_to_sale')
+      table.double('purchase_price')
     })
   }
 
