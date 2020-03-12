@@ -51,7 +51,7 @@ class ClientController {
 
     await Client.create({ 'user_id' : auth.user.id, ...newClient})
 
-    return response.redirect('/sales')
+    return response.redirect('/clients')
 
   }
 

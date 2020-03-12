@@ -23,7 +23,7 @@ class SaleController {
     'FROM sales AS s '+
     'INNER JOIN users AS u ON s.user_id = u.id '+
     'INNER JOIN clients AS c ON s.client_id = c.id '+
-    'INNER JOIN products AS p ON s.product_id = P.id')
+    'INNER JOIN products AS p ON s.product_id = p.id WHERE s.ready = 0')
 
     return view.render('sales.all', {
       sales: sales[0]
@@ -74,8 +74,8 @@ class SaleController {
         newSale.price = totalPrice
         const {product_id, description} = newSale
          
-        await Sale.create({ 'user_id' : auth.user.id, 'price': newSale.price, product_id, description, amount, 'client_id' : c.id})
-        return response.redirect('/sale')
+        await Sale.create({ 'user_id' : auth.user.id, 'price': newSale.price, product_id, description, 'amount' : newSale.amount, 'client_id' : c.id})
+        return response.redirect('/sale/create')
       }
     }
     return response.send('Venda não realizada')

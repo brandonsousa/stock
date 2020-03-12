@@ -11,6 +11,7 @@
 @section('content')
 <h4 class="header-title">Todos os produtos</h4>
 <div class="data-tables">
+    <a href="/products/create" class="btn btn-primary btn-flat btn-lg mt-3">Novo Produto</a>
     <table id="dataTable" class="text-center">
         <thead class="bg-light text-capitalize">
             <tr>
@@ -23,7 +24,7 @@
                 <th>Quantidade</th>
                 <th>Tamanho</th>
                 <th>Preço de compra</th>
-                <th>`reço de venda</th>
+                <th>Preço de venda</th>
                 <th>Editar</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                 <td>{{product.category}}</td>
                 <td>{{product.user}}</td>
                 <td>{{product.amount}}</td>
+                <td>{{product.size}}</td>
                 <td>{{product.purchase_price}}</td>
                 <td>{{product.price_to_sale}}</td>
                 <td>
