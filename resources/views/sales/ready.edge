@@ -6,10 +6,10 @@
 <li><a href="/sale">pedidos</a></li>
 @endsection
 @section('function')
-<li><span>não concluidos</span></li>  
+<li><span>concluidos</span></li>  
 @endsection
 @section('content')
-<h4 class="header-title">Todos os pedidos não concluidos</h4>
+<h4 class="header-title">Todos os pedidos concluidos</h4>
 <div class="data-tables">
     <a href="/sale/create" class="btn btn-primary btn-flat btn-lg mt-3">Novo pedido</a>
     <table id="dataTable" class="text-center">
@@ -22,7 +22,7 @@
                 <th>Cliente</th>
                 <th>Endereço</th>
                 <th>Criado por</th>
-                <th>Status</th>
+                <th>Concluido em</th>
             </tr>
         </thead>
         <tbody>
@@ -34,10 +34,8 @@
                         <td>{{sale.description}}, R$<b>{{sale.price}}</b></td>
                         <td>{{sale.name}}</td>
                         <td>{{sale.street}}, {{sale.number}}, {{sale.neighborhood}}, {{sale.city}} || {{sale.reference}}</td>
-                        <td>{{sale.user}}, <b>em</b> {{sale.created_at}}</td>
-                        <td>
-                            <a href="/sale/checkout/{{sale.sid}}" class="btn btn-primary mt-4 pr-4 pl-4">Concluir pedido</a>
-                        </td>
+                        <td>{{sale.user}}</td>
+                        <td>{{sale.updated_at}}</td>
                     </tr>
             @endeach
         </tbody>

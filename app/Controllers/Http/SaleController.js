@@ -30,6 +30,18 @@ class SaleController {
     })
   }
 
+  async ready({ view }){
+    const sales = await Databse.raw('SELECT s.*, s.id AS "sid", u.username AS "user", c.*, p.name AS "product" '+
+    'FROM sales AS s '+
+    'INNER JOIN users AS u ON s.user_id = u.id '+
+    'INNER JOIN clients AS c ON s.client_id = c.id '+
+    'INNER JOIN products AS p ON s.product_id = p.id WHERE s.ready = 1')
+
+    return view.render('sales.ready', {
+      sales: sales[0]
+    })
+  }
+
   /**
    * Render a form to be used for creating a new sale.
    * GET sales/create
